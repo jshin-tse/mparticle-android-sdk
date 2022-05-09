@@ -4,13 +4,14 @@ import com.google.firebase.iid.FirebaseInstanceIdToken
 import com.google.firebase.messaging.FirebaseMessagingServiceTestContext
 import com.mparticle.MParticle
 import com.mparticle.messaging.InstanceIdService
-import com.mparticle.testutils.BaseCleanStartedEachTest
+import com.mparticle.testing.BaseStartedTest
+import com.mparticle.testing.context
 import org.junit.Assert.assertEquals
 import org.junit.Assert.assertNull
 import org.junit.Test
 import kotlin.test.assertNotNull
 
-class PushRegistrationTest : BaseCleanStartedEachTest() {
+class PushRegistrationTest : BaseStartedTest() {
 
     @Test
     fun deferDuplicatePushRegistrationFromFirebase() {
@@ -20,7 +21,7 @@ class PushRegistrationTest : BaseCleanStartedEachTest() {
 
         // configure the _next_ token Firebase will return when we fetch it (during test)
         FirebaseInstanceIdToken.token = "token1"
-        FirebaseMessagingServiceTestContext.appContext = mContext.applicationContext
+        FirebaseMessagingServiceTestContext.appContext = context.applicationContext
 
         // set the current sender/instanceId in the SDK
         configManager?.pushSenderId = "sender1"

@@ -155,6 +155,7 @@ dependencies {
     }
     androidTestImplementation "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
     androidTestImplementation "org.jetbrains.kotlin:kotlin-test-junit:$kotlin_version"
+    androidTestImplementation "com.mparticle.internal:testing:1.1.0"
 }
 
 

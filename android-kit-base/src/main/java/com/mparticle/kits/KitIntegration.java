@@ -11,8 +11,10 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
 import com.mparticle.BaseEvent;
+import com.mparticle.Configuration;
 import com.mparticle.MPEvent;
 import com.mparticle.MParticle;
+import com.mparticle.MParticleOptions;
 import com.mparticle.commerce.CommerceEvent;
 import com.mparticle.consent.ConsentState;
 import com.mparticle.identity.MParticleUser;
@@ -21,6 +23,7 @@ import org.json.JSONObject;
 
 import java.lang.ref.WeakReference;
 import java.math.BigDecimal;
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
