@@ -1,0 +1,7 @@
+{
+    "androidOptions": {
+        "enabled": true
+    },
+    "binaryOutputDirectory": "/Users/wpassidomo/android-sdk/tooling/android-plugin",
+    "apiSchemaFile": "/Users/wpassidomo/Documents/smartype/examples/iosExample/smartypeexample/freddy_s_plan-v1.json"
+}

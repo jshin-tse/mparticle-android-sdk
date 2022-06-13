@@ -42,6 +42,14 @@ class UploadEventKotlinTest: BaseStartedTest() {
             .assertWillReceive {
                 it.body.any<MPEventMessage> { it.name == "Should Upload 1" }
             }
+            .and
+            .assertWillReceive {
+                it.body.any<MPEventMessage> { it.name == "Should Upload 2" }
+            }
+            .and
+            .assertWillNotReceive {
+                it.body.any<MPEventMessage> { it.name == "Should Not Upload" }
+            }
             .after {
                 MParticle.getInstance()?.logEvent(event)
                 MParticle.getInstance()?.logEvent(event2)
@@ -60,8 +68,10 @@ class UploadEventKotlinTest: BaseStartedTest() {
             .endpoint(
                 EndpointType.Events
             )
-            .assertWillReceive { it.body
-                .run { any<ScreenViewMessage> { it.name == "Should Upload 1"} }
+            .assertWillReceive {
+                it.body
+                    .run { any<ScreenViewMessage> { it.name == "Should Upload 1" } }
+            }
             .after {
                 MParticle.getInstance()?.logScreen("Should Not Upload", null, false)
                 MParticle.getInstance()?.logScreen("Should Upload 1")
