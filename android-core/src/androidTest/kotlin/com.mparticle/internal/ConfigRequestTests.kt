@@ -1,12 +1,10 @@
 package com.mparticle.internal
 
-import android.content.Context
 import com.mparticle.MParticle
 import com.mparticle.MParticleOptions
 import com.mparticle.messages.ConfigResponseMessage
 import com.mparticle.messages.KitConfigMessage
 import com.mparticle.messages.toJsonString
-import com.mparticle.networking.Matcher
 import com.mparticle.testing.BaseTest
 import com.mparticle.testing.context
 import com.mparticle.testing.mockserver.EndpointType
@@ -14,12 +12,8 @@ import com.mparticle.testing.mockserver.Server
 import com.mparticle.testing.mockserver.SuccessResponse
 import com.mparticle.testing.startMParticle
 import com.mparticle.testutils.MPLatch
-import org.json.JSONArray
-import org.json.JSONException
-import org.json.JSONObject
 import org.junit.Test
 import kotlin.test.assertEquals
-import kotlin.test.assertTrue
 
 class ConfigRequestTests : BaseTest() {
     
@@ -137,7 +131,7 @@ class ConfigRequestTests : BaseTest() {
                 true
             }
             .after {
-                startMParticle()
+                startMParticle(MParticleOptions.builder(context))
             }
             .blockUntilFinished()
         assertEquals(simpleConfigWithKits.kits?.joinToString(", ") { it.toJsonString() }.let { "[$it]"}, MParticle.getInstance()?.Internal()?.configManager?.latestKitConfiguration.toString())
